@@ -423,12 +423,6 @@
       <h1 class="section-title">Certificates 📜</h1>
       <div class="certificate-slider">
         <div class="slider-track">
-                    <div class="slide"><img src="./img/python.jpeg" alt="cert"></div>
-          <div class="slide"><img src="./img/sql.jpeg" alt="cert"></div>
-          <div class="slide"><img src="./img/course.png" alt="cert"></div>
-          <div class="slide"><img src="./img/project.png" alt="cert"></div>
-          <div class="slide"><img src="./img/internship.png" alt="cert"></div>
-          <div class="slide"><img src="./img/participation.jpeg" alt="cert"></div>
           <div class="slide"><img src="./img/python.jpeg" alt="cert"></div>
           <div class="slide"><img src="./img/sql.jpeg" alt="cert"></div>
           <div class="slide"><img src="./img/course.png" alt="cert"></div>
@@ -441,8 +435,14 @@
           <div class="slide"><img src="./img/project.png" alt="cert"></div>
           <div class="slide"><img src="./img/internship.png" alt="cert"></div>
           <div class="slide"><img src="./img/participation.jpeg" alt="cert"></div>
+          <div class="slide"><img src="./img/python.jpeg" alt="cert"></div>
+          <div class="slide"><img src="./img/sql.jpeg" alt="cert"></div>
+          <div class="slide"><img src="./img/course.png" alt="cert"></div>
+          <div class="slide"><img src="./img/project.png" alt="cert"></div>
+          <div class="slide"><img src="./img/internship.png" alt="cert"></div>
+          <div class="slide"><img src="./img/participation.jpeg" alt="cert"></div>
+        </div>
       </div>
-</div>
       <button class="view-btn" id="viewBtn"><i class='bx bx-list-ul'></i>&nbsp; View All Certificates</button>
       <div class="certificate-list" id="certList">
         <div class="cert-item">
@@ -455,9 +455,10 @@
           <p>Microsoft SQL Certificate</p>
           <a href="./pdf/intellipaat-microsoft sql (1).pdf"><i class='bx bx-link-external'></i> Open</a>
         </div>
-        <div class="cert-icon"><i class='bx bxs-award'></i></div>
+        <div class="cert-item">
+          <div class="cert-icon"><i class='bx bxs-award'></i></div>
           <p>Power BI</p>
-          <a href="./pdf/intellipaat-Power BI.pdf" target="_blank"><i class='bx bx-link-external'></i> Open</a>
+          <a href="./pdf/intellipaat-power bi.pdf"><i class='bx bx-link-external'></i> Open</a>
         </div>
         <div class="cert-item">
           <div class="cert-icon"><i class='bx bxs-award'></i></div>
@@ -641,7 +642,7 @@
   <button id="chatbotToggleBtn" aria-label="Open TRISHUL AI Assistant">
     <div class="chatbot-pulse"></div>
     <i class='bx bx-bot chatbot-icon'></i>
-    <span class="chatbot-badge">AI</span>
+    <span class="chatbot-badge">v4.12</span>
   </button>
 
   <!-- Chatbot Window -->
@@ -651,35 +652,63 @@
         <span class="dot red"></span>
         <span class="dot yellow"></span>
         <span class="dot green-dot"></span>
-        <span class="chatbot-title"><i class='bx bx-bot'></i> TRISHUL AI v2.4</span>
+        <span class="chatbot-title"><i class='bx bx-bot'></i> TRISHUL AI v4.12</span>
       </div>
       <div class="chatbot-header-right">
+        <button id="chatbotSettingsBtn" type="button" title="OpenAI API Settings"><i class='bx bx-cog'></i></button>
         <button id="chatbotResetBtn" type="button" title="Clear Chat"><i class='bx bx-trash'></i></button>
         <button id="chatbotCloseBtn" type="button" title="Close"><i class='bx bx-x'></i></button>
       </div>
     </div>
+
+    <!-- OpenAI Settings Panel -->
+    <div id="chatbotSettingsPanel" class="chatbot-settings-closed">
+      <div class="settings-header">
+        <span><i class='bx bxl-openai'></i> OpenAI API Settings</span>
+        <button id="closeSettingsBtn" type="button"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="settings-body">
+        <label for="openaiKeyInput">OpenAI API Key (Optional):</label>
+        <input type="password" id="openaiKeyInput" placeholder="sk-..." autocomplete="off">
+        <small>Key is stored locally in your browser. Leave blank for built-in trained engine.</small>
+
+        <label for="openaiModelSelect">Select Model:</label>
+        <select id="openaiModelSelect">
+          <option value="gpt-4o-mini" selected>gpt-4o-mini (Fast & Recommended)</option>
+          <option value="gpt-4o">gpt-4o (High Reasoning)</option>
+          <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+        </select>
+
+        <div class="settings-actions">
+          <button id="saveKeyBtn" type="button"><i class='bx bx-save'></i> Save Settings</button>
+          <button id="clearKeyBtn" type="button"><i class='bx bx-trash'></i> Clear Key</button>
+        </div>
+      </div>
+    </div>
+
     <div class="chatbot-status-bar">
-      <span class="status-indicator"></span> ONLINE &nbsp;|&nbsp; READY TO ASSIST
+      <span class="status-indicator"></span> <span id="chatbotStatusText">ONLINE &nbsp;|&nbsp; TRISHUL AI v4.12 READY</span>
     </div>
     <div class="chatbot-body" id="chatbotBody">
       <div class="chat-msg bot-msg">
         <div class="chat-avatar"><i class='bx bx-bot'></i></div>
         <div class="chat-text">
-          👋 Hi! I am <strong>TRISHUL AI</strong>, the intelligent assistant for Aryan Nale. Ask me anything about Aryan's skills, robotics projects, CAD, resume, or contact details!
+          👋 Hi! I am <strong>TRISHUL AI v4.12</strong>, the intelligent assistant for Aryan Nale. Ask me anything about Aryan's mechanical engineering background, CAD modeling, robotics projects, resume, or contact details!
         </div>
       </div>
       <!-- Quick Suggestion Chips -->
       <div class="chat-chips-container" id="chatChips">
         <span class="chat-chip" data-query="Who is Aryan?">👤 About Aryan</span>
-        <span class="chat-chip" data-query="What are Aryan's skills?">💪 Skills</span>
-        <span class="chat-chip" data-query="Show me projects">🚀 Projects</span>
+        <span class="chat-chip" data-query="What are Aryan's skills?">💪 Skills & CAD</span>
+        <span class="chat-chip" data-query="Show me projects">🚀 5 Projects</span>
         <span class="chat-chip" data-query="Tell me about Resume">📄 Resume</span>
         <span class="chat-chip" data-query="How to contact Aryan?">📬 Contact</span>
+        <span class="chat-chip" data-query="OpenAI Settings">⚙️ OpenAI API</span>
       </div>
     </div>
     <div class="chatbot-footer">
       <form id="chatbotForm" onsubmit="event.preventDefault();">
-        <input type="text" id="chatbotInput" placeholder="Ask TRISHUL AI anything..." autocomplete="off">
+        <input type="text" id="chatbotInput" placeholder="Ask TRISHUL AI v4.12 anything..." autocomplete="off">
         <button type="submit" id="chatbotSendBtn"><i class='bx bx-send'></i></button>
       </form>
     </div>
