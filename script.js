@@ -176,27 +176,27 @@ document.querySelectorAll(".section").forEach(section => {
     scrollObserver.observe(section);
 });
 
-// Observe project fadein-left / fadein-right separately
+// Observe project fadein-left / fadein-right separately with enhanced smooth reveal
 const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("fade-in-active");
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translate(0, 0)";
             const video = entry.target.querySelector("video");
-            if (video) video.play().catch(() => {});
+            if (video) {
+                video.play().catch(() => {});
+            }
             if (isMobileDevice) {
                 fadeObserver.unobserve(entry.target);
             }
         } else if (!isMobileDevice) {
             entry.target.classList.remove("fade-in-active");
-            entry.target.style.opacity = "";
-            entry.target.style.transform = "";
             const video = entry.target.querySelector("video");
-            if (video) video.pause();
+            if (video) {
+                video.pause();
+            }
         }
     });
-}, { threshold: isMobileDevice ? 0.02 : 0.08, rootMargin: isMobileDevice ? "0px 0px 60px 0px" : "0px 0px -20px 0px" });
+}, { threshold: isMobileDevice ? 0.02 : 0.12, rootMargin: isMobileDevice ? "0px 0px 60px 0px" : "0px 0px -40px 0px" });
 
 document.querySelectorAll(".fadein-left, .fadein-right").forEach(el => {
     fadeObserver.observe(el);
